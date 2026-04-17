@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temporizador</title>
+  </head>
+
+  <body>
+    <header>
+      <p id="parrafo">Hola, que tal?</p>
+      <button id="iniciar">Iniciar</button>
+      <button id="parar">Parar</button>
+    </header>
+
+    <script>
+      let parrafo = document.getElementById("parrafo");
+      let buttonIniciar = document.getElementById("iniciar");
+      let buttonDetener = document.getElementById("detener");
+
+      let visible = true;
+      let intervalo = null;
+
+      buttonIniciar.addEventListener("click", function () {
+        clearInterval(intervalo);
+
+        intervalo = setInterval(function () {
+          visible = !visible;
+
+          if (visible) {
+            parrafo.style.visibility = "visible";
+          } else {
+            parrafo.style.visibility = "hidden";
+          }
+        }, 500);
+      });
+
+      buttonDetener.addEventListener("click", function () {
+        clearInterval(intervalo);
+      });
+    </script>
+  </body>
+</html>

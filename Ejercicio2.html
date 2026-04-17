@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temporizador</title>
+  </head>
+
+  <body>
+    <header>
+      <p id="resultado">10</p>
+      <p id="tiempo"></p>
+      <button id="iniciar">Iniciar</button>
+      <button id="parar">Parar</button>
+    </header>
+
+    <script>
+      let resultado = document.getElementById("resultado");
+      let botonIniciar = document.getElementById("iniciar");
+      let botonParar = document.getElementById("parar");
+
+      let cuenta = 10;
+      let intervalo = null;
+
+      botonIniciar.addEventListener("click", iniciar);
+      botonParar.addEventListener("click", parar);
+
+      function iniciar() {
+        clearInterval(intervalo); 
+
+        intervalo = setInterval(function () {
+          cuenta--;
+          resultado.innerHTML = cuenta;
+
+          if (cuenta === 0) {
+            clearInterval(intervalo);
+            resultado.innerHTML = "¡Tiempo!";
+          }
+        }, 1000);
+      }
+
+      function parar() {
+        clearInterval(intervalo);
+      }
+    </script>
+  </body>
+</html>

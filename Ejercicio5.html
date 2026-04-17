@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h1 id="display">1</h1>
+    <p id="resultado"></p>
+
+    <button onclick="jugar()">Jugar</button>
+    <button onclick="parar()">¡Para!</button>
+    <button onclick="reiniciar()">Jugar de nuevo</button>
+
+    <script>
+      let numeroActual = 1;
+      let intervalo = null;
+
+      const display = document.getElementById("display");
+      const resultado = document.getElementById("resultado");
+
+      function jugar() {
+        clearInterval(intervalo);
+        resultado.innerHTML = "";
+
+        intervalo = setInterval(function () {
+          numeroActual = Math.floor(Math.random() * 10) + 1;
+          display.innerHTML = numeroActual;
+        }, 200);
+      }
+
+      function parar() {
+        clearInterval(intervalo);
+
+        if (numeroActual === 7) {
+          resultado.innerHTML = "¡Ganaste!";
+        } else {
+          resultado.innerHTML =
+            "Era el " + numeroActual + ", inténtalo de nuevo.";
+        }
+      }
+
+      function reiniciar() {
+        clearInterval(intervalo);
+        numeroActual = 1;
+        display.innerHTML = numeroActual;
+        resultado.innerHTML = "";
+      }
+    </script>
+  </body>
+</html>
